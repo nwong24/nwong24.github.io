@@ -1,99 +1,66 @@
 ---
 layout: essay
 type: essay
-title: "Smart Questions, Good Answers"
+title: "What makes a good question?"
 # All dates must be YYYY-MM-DD format!
-date: 2015-09-08
+date: 2026-03-31
 published: true
 labels:
-  - Questions
-  - Answers
   - StackOverflow
+  - Forums
 ---
 
-<img width="300px" class="rounded float-start pe-4" src="../img/smart-questions/rtfm.png">
+<img width="300px" class="rounded float-start pe-4" src="../img/smart-questions/smartq.png">
 
-## Is there such thing as a stupid question?
+### You get what you ask for
+The difference between getting a good and a bad answer depends on how you ask. If you give a vague question such as "How do I do X?", not only will people often feel annoyed by the lack of effort on your end but will also not have enough context to properly assist you. In contrast, if you provide plenty of details and have a well structured question that indicates that you put a lot of thought behind it, it will show others that you respect their time and effort and make them more willing to answer your question with an equally detailed response.
 
-I’ve had instructors address a whole class and say, “There’s no such thing as a stupid question.” I now know that is in fact not true because I’ve challenged the statement and received the appropriate dumb-stricken, annoyed look. There are definitely stupid questions, and along with that, usually unhelpful answers. Though we all might be guilty of being callous and making people victim to our poorly formed questions, there are steps we can take to ask smarter questions that hopefully don’t illicit the dreaded “rtfm” or “stfw” response.
+### Asking good questions to LLMs??
+This is similar to the skills required to be a successful prompt engineer. LLMs perform best when given enough context and specific instructions on what to do. Pasting in a vague question like "Implement this" leaves much room for the LLM to wander and hallucinate. Next time, keep in mind all of the requirements of a task and include as many as you can into the LLM. Putting no work into your prompts will lead to garbage output.
 
-## What’s a smart question?
+### What should I put in my question?
+What type of details should I put in my questions though? First, you should explain your problem, what you are trying to achieve, and enough details to allow someone to reproduce your setup or problem on their own machine. For example, if you are getting a segmentation fault in a tool you are using, it might be helpful to include the minimized input you are providing, the version number, the backtrace, and the flags you were using. You should also describe what you have tried to fix the problem, which can help save the time of your helpers when debugging and also signals that you have spent effort. On the other end, don't post baseless speculation which can waste others' time; just focus on what you can observe happening. Once you have found the solution, be sure to post it for future people to use if they have the same issue.
 
-Stack Overflow, a question and answer site for programmers, is a great resource for anyone who may have issues with code or who may simply want to learn new or different methods of doing something. There I found examples of good questions and bad questions, which could probably be improved.
-
-In the following example, we examine the components of a decent question. In this case, the asker is trying to figure out a way to get the date of the previous month in Python.
-
+### An example of a Smart Question
+This is a StackOverflow [post](https://unix.stackexchange.com/questions/447898/why-does-a-program-with-fork-sometimes-print-its-output-multiple-times) asking about how newlines in printed strings affect the behavior after `fork()`. Here is the full post:
 ```
-Q: python date of the previous month
+In Program 1 Hello world gets printed just once, but when I remove \n and run it (Program 2), the output gets printed 8 times. Can someone please explain me the significance of \n here and how it affects the fork()?
 
-I am trying to get the date of the previous month with python. Here is what i've tried:
+Program 1
 
-str( time.strftime('%Y') ) + str( int(time.strftime('%m'))-1 )
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-However, this way is bad for 2 reasons: First it returns 20122 for the February of 2012 (instead of 201202) 
-and secondly it will return 0 instead of 12 on January.
+int main()
+{
+    printf("hello world...\n");
+    fork();
+    fork();
+    fork();
+}
 
-I have solved this trouble in bash with:
+Output 1:
 
-echo $(date -d"3 month ago" "+%G%m%d")
+hello world... 
 
-I think that if bash has a built-in way for this purpose, then python, much more equipped, should provide something 
-better than forcing writing one's own script to achieve this goal. Of course i could do something like:
+Program 2
 
-if int(time.strftime('%m')) == 1:
-    return '12'
-else:
-    if int(time.strftime('%m')) < 10:
-        return '0'+str(time.strftime('%m')-1)
-    else:
-        return str(time.strftime('%m') -1)
-        
-I have not tested this code and i don't want to use it anyway (unless I can't find any other way:/)
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-Thanks for your help!
+int main()
+{
+    printf("hello world...");
+    fork();
+    fork();
+    fork();
+}
+
+Output 2:
+
+hello world... hello world...hello world...hello world...hello world...hello world...hello world...hello world...
 ```
-
-While the heading of his question could be better, it does convey what he’s trying to figure out. Usually something as brief as “python date of previous month” is what other users would enter in as search terms on Google, making it easily found. Another good thing about the question is that it’s not just a question. The asker shows what he or she has done and that he or she has put in some effort to answer the question. And while it may not be as important as the question itself, the asker shows courtesy, which does increase the chance of getting an answer.
-
-```
-A: datetime and the datetime.timedelta classes are your friend.
-
-1. find today
-2. use that to find the first day of this month.
-3. use timedelta to backup a single day, to the last day of the previous month.
-4. print the YYYYMM string you're looking for.
-
-Like this:
-
- >>> import datetime
- >>> today = datetime.date.today()
- >>> first = datetime.date(day=1, month=today.month, year=today.year)
- >>> lastMonth = first - datetime.timedelta(days=1)
- >>> print lastMonth.strftime("%Y%m")
- 201202
- >>>
-
-```
- 
-The asker received six possible answers, and he or she was successful in inciting discussion from multiple users. The answers themselves were clear and were devoid of the rumored sarcasm and hostility of “hackers.” Since I myself have referenced this page and found it useful, I can confidently say that it is a good question.
-
-## The foolproof way to get ignored.
-
-While there are decent questions that benefit everyone, there are those one can ask to create an entirely different effect. In the following example, a user asks how he would, in short, create a desktop application with Facebook.
-
-```
-Q: Facebook Desktop Notifier
-
-I am a beginner programmer that have never used anything other than what's included in a language.
-
-I am trying to create a desktop application that notifies me anytime I get an update onfacebook. 
-How should go about doing this? Thanks in advance.
-
-edit Sorry I was not clear. Is there any way to make a DESKTOP application with facebook?
-```
-
-A simple “yes” would have answered the question, but we know that’s not the sort of answer he or she is looking for. Fortunately, someone kindly responded with a link to Facebook’s developer website. The asker should have done more research on his or her potential project. Then further down the road, he or she could have asked more specific and detailed questions that wouldn’t require a thousand-paged response for a sufficient answer.
-
-## Conclusion
-
-When we rely on others’ generosity and expertise to provide answers to our questions, it should hold that the question we ask should be one that leads to efficient and effective help that not only benefits us, but also the people we ask and others who might ask the same question in the future. Thus, if you have a question… make it a smart one! Asking questions may not always get you the best answer, but asking them in a way that will make others want to answer them will increase the success of finding a good solution and make it a positive experience on all sides.
