@@ -64,3 +64,18 @@ Output 2:
 
 hello world... hello world...hello world...hello world...hello world...hello world...hello world...hello world...
 ```
+
+As we can see, he explains what he has tried (removing the newline), and provides the minimal C program we can compile to reproduce his observed behavior. In return, he receives a well written response explaining to him the buffering system of glibc and how the 8 resulting processes still have the string in their buffer and all flush it at once when each process exits.
+
+### An example of a Not So Smart Question
+In this SO [post](https://meta.stackoverflow.com/questions/359447/may-i-ask-for-tips), this user is asking for generic tips for their JavaScript code. Here is the post below:
+```
+I have a piece of JavaScript code I want to ask advice on. I want to know if I may post a question on the main site, asking for tips on a piece of code I have written. I don't want the answer, just tips. May I do this?
+
+I wrote the code myself, but I am unable to proceed. I would just like some advice on how to proceed - like "use a function" or whatever. Or is there a beginner's site to ask questions?
+```
+
+First of all, there is no effort put into the question. The user states that they want advice on the Javascript code but doesn't post it. This makes it impossible for others to know what this user has tried before and where to direct them towards. In addition, if this user just wanted advice for beginners, there are plenty of websites on the internet that can provide such information. This shows that they didn't even attempt to improve on their own or do any research and just went straight to the forum. Rightfully so, this user received -10 points and a set of negative comments from other users, telling them that they should be using the site to ask specific questions and not look for vague advice.
+
+### What I learned
+To get good answers, you must put the work to make a good question first. A good answer consists of detailed information about your environment and your problem. It also doesn't include redundant information that will waste contributers' time. You should post your question on a relevant forum as well, or today maybe even ask an LLM and double check its answer. With these steps, you will be sure to get good responses from other users.
