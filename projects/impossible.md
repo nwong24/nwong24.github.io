@@ -11,7 +11,7 @@ labels:
 summary: "Using python tricks to bypass an input filter to achieve RCE"
 ---
 
-<img class="img-fluid" src="../img/impossible/shellpop.png">
+<img class="img-fluid" src="img/impossible/shellpop.png">
 
 Pyjails are a type of puzzle where an author creates a restricted python environment, where the goal is to escape the sandbox and get code execution. An archive of some pyjails can be found at this [link](https://github.com/jailctf/pyjail-collection). In late 2025, I tried my hand at one of these pyjails to gain a better understanding of python's internal mechanisms.
 
