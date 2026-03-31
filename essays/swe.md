@@ -13,8 +13,6 @@ labels:
 <img width="200px" class="rounded float-start pe-4" src="../img/swe/coding.webp">
 
 
-### Third, create a technical essay (approximately 3-4 paragraphs) that discusses your interests in software engineering and what kinds of skills and experiences you hope to develop in future.
-
 ### What are my interests in software engineering
 I entered this type of profession path because I was interested in making more money, but as I spent more time studying I became fascinated with code. Building something from scratch with just my fingertips on a keyboard felt really powerful. After ICS212, I fell in love with the language of C and hope to be able to write code with it as a career. I heard that this type of language is reserved for systems programmers and as such that is the career I aspire to have after graduating.
 
