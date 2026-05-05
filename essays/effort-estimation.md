@@ -13,4 +13,6 @@ labels:
 <img width="300px" class="rounded float-start pe-4" src="../img/effort-estimation/effort-estimation.png">
 
 ### How I made my estimates
-I made my estimates by comparing the task to anything similar I did in the past. If it was something small, such as updating a Prisma schema, I could estimate that it would only take a few minutes. However, if it was something like creating a UI with React, I knew I would struggle more because I am not so familiar and estimated that it would take more time.
+I made my estimates by comparing the task to anything similar I did in the past. If it was something small, such as updating a Prisma schema, I could estimate that it would only take a few minutes. However, if it was something like creating a UI with React, I knew I would struggle more because I am not so familiar and estimated that it would take more time. Some useful points of reference I used were from the effort estimation logs I kept from the practice WODs we did. I usually added a bit more time to similar tasks to account for the lack of a guide to help me through the task.
+
+
